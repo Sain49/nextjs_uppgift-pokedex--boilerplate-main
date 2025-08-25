@@ -5,19 +5,21 @@ import "./globals.css";
 const jaldi = Jaldi({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-jaldi"
+  variable: "--font-jaldi",
 });
 
 const jersey = Jersey_10({
   subsets: ["latin"],
   weight: "400",
-  variable: "--font-jersey"
+  variable: "--font-jersey",
 });
 
 export const metadata: Metadata = {
   title: "Pokédex",
   description: "Explore the world of Pokémon",
 };
+
+import Header from "@/components/Header";
 
 export default function RootLayout({
   children,
@@ -26,12 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${jaldi.variable} ${jersey.variable} antialiased`}
-      >
-        <header className="content-grid">
-        </header>
-        {children}
+      <body className={`${jaldi.variable} ${jersey.variable} antialiased`}>
+        {/* <header className="content-grid">
+        </header> */}
+        <Header />
+        <main className="flex-grow">{children}</main>
       </body>
     </html>
   );
