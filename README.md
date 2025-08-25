@@ -7,11 +7,11 @@ I den här uppgiften får du möjlighet att tillämpa dina kunskaper om **React*
 
 ## 🎯 Mål för projektet
 
-* 🔗 **Välja API-strategi:** Använd antingen **REST-API** eller **GraphQL** från [PokeAPI](https://pokeapi.co/).
-* 🧩 **Komponentbaserad design:** Skapa återanvändbara och logiska komponenter.
-* 📡 **Datahämtning:** Hämta data från PokeAPI för att visa Pokémon.
-* 🛣️ **Routing & felhantering:** Använd Next.js routing + en dedikerad **404-sida**.
-* ⚡ **Dynamiskt innehåll:** Möjlighet att interagera med Pokémon-data.
+- 🔗 **Välja API-strategi:** Använd **REST-API** från [PokeAPI](https://pokeapi.co/).
+- 🧩 **Komponentbaserad design:** Skapa återanvändbara och logiska komponenter.
+- 📡 **Datahämtning:** Hämta data från PokeAPI för att visa Pokémon.
+- 🛣️ **Routing & felhantering:** Använd Next.js routing + en dedikerad **404-sida**.
+- ⚡ **Dynamiskt innehåll:** Möjlighet att interagera med Pokémon-data.
 
 ---
 
@@ -19,49 +19,49 @@ I den här uppgiften får du möjlighet att tillämpa dina kunskaper om **React*
 
 ### 🏠 Startsida (`/`)
 
-* Visa en **Featured-sektion** med fyra slumpmässigt utvalda Pokémon.
-* Möjlighet att slumpa fram en **enskild Pokémon** med knapptryck.
+- Visa en **Featured-sektion** med fyra slumpmässigt utvalda Pokémon.
+- Möjlighet att slumpa fram en **enskild Pokémon** med knapptryck.
 
 ### 🔍 Söksida (`/search`)
 
-* Sökfält för att skriva in Pokémon-namn.
-* Visa detaljer om den Pokémonen vid sökning.
-* Använd **dynamisk routing** eller `searchParams`.
+- Sökfält för att skriva in Pokémon-namn.
+- Visa detaljer om den Pokémonen vid sökning.
+- Använd **dynamisk routing** eller `searchParams`.
 
 ### 🧩 Filtreringssida (`/types`)
 
-* Lista alla Pokémontyper (t.ex. Fire 🔥, Water 💧, Grass 🌱).
-* Klick på typ → visa alla Pokémon av den typen.
+- Lista alla Pokémontyper (t.ex. Fire 🔥, Water 💧, Grass 🌱).
+- Klick på typ → visa alla Pokémon av den typen.
 
 ### 🚫 404-sida (`/not-found.tsx`)
 
-* Anpassad sida för ogiltiga länkar, felaktiga API-anrop.
+- Anpassad sida för ogiltiga länkar, felaktiga API-anrop.
 
 ---
 
 ## ⚙️ Tekniska krav
 
-* ⚛️ **Next.js + React** (med app router).
-* 🖥️ **Serverkomponenter** för all datahämtning.
-* 🎨 Styling med **CSS Modules** eller global CSS.
+- ⚛️ **Next.js + React** (med app router).
+- 🖥️ **Serverkomponenter** för all datahämtning.
+- 🎨 Styling med **CSS Modules** eller global CSS.
 
 ---
 
 ## 💡 Tips & Att tänka på
 
-* 📂 **Komponentstruktur** (exempel):
+- 📂 **Komponentstruktur** (exempel):
 
-  * `PokemonCard.tsx` → visar en Pokémon.
-  * `FeaturedList.tsx` → hanterar fyra utvalda Pokémon.
-  * `SearchForm.tsx` → sökfält.
+  - `PokemonCard.tsx` → visar en Pokémon.
+  - `FeaturedList.tsx` → hanterar fyra utvalda Pokémon.
+  - `SearchForm.tsx` → sökfält.
 
-* ❌ **Felhantering:** Tänk på om API-anrop misslyckas eller om Pokémon inte finns.
+- ❌ **Felhantering:** Tänk på om API-anrop misslyckas eller om Pokémon inte finns.
 
-* ⏳ **Loading-state:** Använd `loading.tsx` för att visa en indikator.
+- ⏳ **Loading-state:** Använd `loading.tsx` för att visa en indikator.
 
-* ⌛ **Async/Await:** Hantera API-anrop snyggt i serverkomponenter.
+- ⌛ **Async/Await:** Hantera API-anrop snyggt i serverkomponenter.
 
-* ⚛️ **Bolierplate:** Ni hittar en liten startkod till projektet [här](https://github.com/Lexicon-frontend-2025/nextjs_uppgift-pokedex--boilerplate)
+- ⚛️ **Bolierplate:** Ni hittar en liten startkod till projektet [här](https://github.com/Lexicon-frontend-2025/nextjs_uppgift-pokedex--boilerplate)
 
 ---
 
