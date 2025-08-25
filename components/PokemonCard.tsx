@@ -28,6 +28,29 @@ export default async function PokemonCard({
         <div>
           <Image src={imagerUrl} alt={pokemon.name} width={100} height={100} />
         </div>
+        <div className="mt-20">
+          <p>{pokemonId}</p>
+          <h3>{pokemon.name}</h3>
+          <div>
+            {types.map((type: string) => (
+              <span key={type}>{type}</span>
+            ))}
+          </div>
+          <div>
+            <div>
+              <p>{stats.hp}</p>
+              <p>HP</p>
+            </div>
+            <div>
+              <p>{stats.attack}</p>
+              <p>Attack</p>
+            </div>
+            <div>
+              <p>{stats.defense}</p>
+              <p>Defense</p>
+            </div>
+          </div>
+        </div>
       </div>
     </Link>
   );
