@@ -23,35 +23,51 @@ export default async function PokemonCard({
   };
 
   return (
-    <Link href={`/pokemon/${pokemon.name}`}>
-      <div className="bg-white rounded-2xl shadow-lg border-4 border-blue-300 p-4 relative text-center">
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 border-4 border-blue-300">
-          <Image src={imagerUrl} alt={pokemon.name} width={400} height={400} />
+    <div className="bg-white rounded-2xl shadow-lg border-4 border-blue-300 p-3 relative flex flex-col items-center">
+      {types.length > 0 && (
+        <div
+          key={types[0]}
+          className={`absolute bg-white rounded-full p-2 border-4 image-border-${types[0]} brightness-[1.2] mt-2`}
+        >
+          <Image src={imagerUrl} alt={pokemon.name} width={75} height={75} />
         </div>
-        <div className="mt-20">
-          <p className="text-gray-500">{pokemonId}</p>
-          <h3 className="font-bold text-2xl capitalize mt-2">{pokemon.name}</h3>
-          <div>
-            {types.map((type: string) => (
-              <span key={type}>{type}</span>
-            ))}
-          </div>
-          <div>
-            <div>
-              <p>{stats.hp}</p>
-              <p>HP</p>
-            </div>
-            <div>
-              <p>{stats.attack}</p>
-              <p>Attack</p>
-            </div>
-            <div>
-              <p>{stats.defense}</p>
-              <p>Defense</p>
-            </div>
-          </div>
+      )}
+      <div className="text-center mt-28">
+        {types.length > 0 && (
+          <span
+            key={types[0]}
+            className={`badge-${types[0]} brightness-[1.2] text-xs rounded-full px-1`}
+          >
+            {pokemonId}
+          </span>
+        )}
+
+        <h3 className="font-semi-bold text-2xl capitalize">{pokemon.name}</h3>
+        <div className="flex justify-center gap-2">
+          {types.map((type: string) => (
+            <span
+              key={type}
+              className={`badge-${type} px-2 text-xs font-semibold rounded-full`}
+            >
+              {type}
+            </span>
+          ))}
         </div>
       </div>
-    </Link>
+      <div className="flex flex-col mt-1 pt-1">
+        <div className="flex justify-between gap-30">
+          <p className="font-bold text-sm">HP</p>
+          <p className="font-bold text-sm">{stats.hp}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="font-bold text-sm">Attack</p>
+          <p className="font-bold text-sm">{stats.attack}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="font-bold text-sm">Defense</p>
+          <p className="font-bold text-sm">{stats.defense}</p>
+        </div>
+      </div>
+    </div>
   );
 }
