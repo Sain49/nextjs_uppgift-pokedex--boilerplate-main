@@ -25,7 +25,9 @@ body {
   font-family: var(--font-jaldi), Arial, Helvetica, sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-jersey), Arial, Helvetica, sans-serif;
 }
 
@@ -39,9 +41,19 @@ h1, h2, h3 {
   --c2: var(--color-neutral-500);
   --c3: var(--color-neutral-700);
 
-  background: repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 50%) calc(var(--s)/2) calc(var(--s)*tan(30deg)/2),
-    repeating-conic-gradient(from 30deg, var(--c1) 0 60deg, var(--c2) 0 120deg, var(--c3) 0 50%);
-  background-size: var(--s) calc(var(--s)*tan(30deg));
+  background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        var(--c3) 0 50%
+      )
+      calc(var(--s) / 2) calc(var(--s) * tan(30deg) / 2),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0 60deg,
+      var(--c2) 0 120deg,
+      var(--c3) 0 50%
+    );
+  background-size: var(--s) calc(var(--s) * tan(30deg));
 }
 
 .btn-primary {
@@ -52,6 +64,122 @@ h1, h2, h3 {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-800 to-blue-800;
 }
 
+.pokemon-card {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200;
+}
+
+/* Pokemon type colors */
+.badge-grass {
+  background-color: #78c850;
+}
+.badge-fire {
+  background-color: #f08030;
+}
+.badge-water {
+  background-color: #6890f0;
+}
+.badge-bug {
+  background-color: #a8b820;
+}
+.badge-normal {
+  background-color: #a8a878;
+}
+.badge-poison {
+  background-color: #a040a0;
+}
+.badge-electric {
+  background-color: #f8d030;
+}
+.badge-ground {
+  background-color: #e0c068;
+}
+.badge-fairy {
+  background-color: #ee99ac;
+}
+.badge-fighting {
+  background-color: #c03028;
+}
+.badge-psychic {
+  background-color: #f85888;
+}
+.badge-rock {
+  background-color: #b8a038;
+}
+.badge-ghost {
+  background-color: #705898;
+}
+.badge-ice {
+  background-color: #98d8d8;
+}
+.badge-dragon {
+  background-color: #7038f8;
+}
+.badge-dark {
+  background-color: #705848;
+}
+.badge-steel {
+  background-color: #b8b8d0;
+}
+.badge-flying {
+  background-color: #a890f0;
+}
+
+/* Pokemon type image border colors */
+.image-border-grass {
+  border-color: #78c850;
+}
+.image-border-fire {
+  border-color: #f08030;
+}
+.image-border-water {
+  border-color: #6890f0;
+}
+.image-border-bug {
+  border-color: #a8b820;
+}
+.image-border-normal {
+  border-color: #a8a878;
+}
+.image-border-poison {
+  border-color: #a040a0;
+}
+.image-border-electric {
+  border-color: #f8d030;
+}
+.image-border-ground {
+  border-color: #e0c068;
+}
+.image-border-fairy {
+  border-color: #ee99ac;
+}
+.image-border-fighting {
+  border-color: #c03028;
+}
+.image-border-psychic {
+  border-color: #f85888;
+}
+.image-border-rock {
+  border-color: #b8a038;
+}
+.image-border-ghost {
+  border-color: #705898;
+}
+.image-border-ice {
+  border-color: #98d8d8;
+}
+.image-border-dragon {
+  border-color: #7038f8;
+}
+.image-border-dark {
+  border-color: #705848;
+}
+.image-border-steel {
+  border-color: #b8b8d0;
+}
+.image-border-flying {
+  border-color: #a890f0;
+}
+
 /* breakout */
 /* see https://www.youtube.com/watch?v=c13gpBrnGEw */
 /* TODO: make tailwind utility */
@@ -59,30 +187,40 @@ h1, h2, h3 {
   --spacing-xl: 4rem;
   --spacing-lg: 2rem;
   --spacing-md: 1rem;
-  --spacing-sm: .5rem;
-  --spacing-xs: .25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-xs: 0.25rem;
 
   --content-max-width: 56.25rem;
   --breakout-max-width: 75rem;
   --padding-inline: var(--spacing-md);
-  --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
 
   display: grid;
   grid-template-columns:
-    [full-width-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2),
-      var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(
+      100% - (var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(
+      var(--padding-inline),
+      1fr
+    )
+    [full-width-end];
 }
 
-.content-grid> :not(.breakout, .full-width),
-.full-width> :not(.breakout, .full-width) {
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
   grid-column: content;
 }
 
-.content-grid>.breakout {
+.content-grid > .breakout {
   grid-column: breakout;
 }
 
-.content-grid>.full-width {
+.content-grid > .full-width {
   grid-column: full-width;
 
   display: grid;
