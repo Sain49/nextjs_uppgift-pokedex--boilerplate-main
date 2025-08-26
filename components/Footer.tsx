@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container flex flex-col items-center mx-auto px-4 text-center">
         <div className="flex justify-center items-center gap-2">
           <Image src="/Logo.png" alt="Pokedex logo" width={40} height={40} />
-          <span className="text-2x1 font-bold">Pokédex</span>
+          <span className="text-2xl font-bold">Pokédex</span>
         </div>
         <p className="mt-4">Explore the world of Pokemon</p>
         <div className="flex justify-center gap-4 mt-4">

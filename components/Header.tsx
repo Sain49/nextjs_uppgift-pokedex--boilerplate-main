@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/Logo.png" alt="Pokédex Logo" width={40} height={40} />
-          <span className="text-2x1 font-bold">Pokédex</span>
+          <span className="text-2xl font-bold">Pokédex</span>
         </Link>
         <nav>
           <ul className="flex gap-8">

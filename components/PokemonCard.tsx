@@ -24,13 +24,13 @@ export default async function PokemonCard({
 
   return (
     <Link href={`/pokemon/${pokemon.name}`}>
-      <div>
-        <div>
-          <Image src={imagerUrl} alt={pokemon.name} width={100} height={100} />
+      <div className="bg-white rounded-2xl shadow-lg border-4 border-blue-300 p-4 relative text-center">
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 bg-white rounded-full p-2 border-4 border-blue-300">
+          <Image src={imagerUrl} alt={pokemon.name} width={400} height={400} />
         </div>
         <div className="mt-20">
-          <p>{pokemonId}</p>
-          <h3>{pokemon.name}</h3>
+          <p className="text-gray-500">{pokemonId}</p>
+          <h3 className="font-bold text-2xl capitalize mt-2">{pokemon.name}</h3>
           <div>
             {types.map((type: string) => (
               <span key={type}>{type}</span>
