@@ -33,7 +33,7 @@ export default function RootLayout({
         {/* <header className="content-grid">
         </header> */}
         <Header />
-        <main className="flex-grow">{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

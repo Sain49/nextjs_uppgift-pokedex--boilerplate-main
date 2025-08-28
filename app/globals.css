@@ -57,15 +57,11 @@ h3 {
 }
 
 .btn-primary {
-  @apply p-2 pl-6 pr-6 mt-4 mb-14 cursor-pointer text-xl text-white bg-gradient-to-r from-orange-400 to-red-400 rounded-full font-bold flex items-center justify-center gap-1;
+  @apply p-2 pl-6 pr-6 mt-4 mb-8 cursor-pointer text-xl text-white bg-gradient-to-r from-orange-400 to-red-400 rounded-full font-bold flex items-center justify-center gap-1;
 }
 
 .text-gradient {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-800 to-blue-800;
-}
-
-.pokemon-card {
-  @apply bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-200;
 }
 
 /* Pokemon type colors */
