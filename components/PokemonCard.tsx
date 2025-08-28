@@ -22,26 +22,21 @@ export default async function PokemonCard({
       ?.base_stat,
   };
 
+  const pokemonType = types[0] || "normal";
+
   return (
     <div className="bg-white rounded-2xl shadow-lg border-4 border-blue-300 p-3 relative flex flex-col items-center">
-      {types.length > 0 && (
-        <div
-          key={types[0]}
-          className={`absolute bg-white rounded-full p-2 border-4 image-border-${types[0]} brightness-[1.2] mt-2`}
-        >
-          <Image src={imagerUrl} alt={pokemon.name} width={75} height={75} />
-        </div>
-      )}
+      <div
+        className={`absolute bg-white rounded-full p-2 border-4 image-border-${pokemonType} brightness-[1.2] mt-2`}
+      >
+        <Image src={imagerUrl} alt={pokemon.name} width={75} height={75} />
+      </div>
       <div className="text-center mt-28">
-        {types.length > 0 && (
-          <span
-            key={types[0]}
-            className={`badge-${types[0]} brightness-[1.2] text-xs rounded-full px-1`}
-          >
-            {pokemonId}
-          </span>
-        )}
-
+        <span
+          className={`badge-${pokemonType} brightness-[1.2] text-xs rounded-full px-1`}
+        >
+          {pokemonId}
+        </span>
         <h3 className="font-semi-bold text-2xl capitalize">{pokemon.name}</h3>
         <div className="flex justify-center gap-2">
           {types.map((type: string) => (
