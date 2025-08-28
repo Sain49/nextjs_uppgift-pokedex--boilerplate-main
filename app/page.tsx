@@ -1,5 +1,5 @@
 import { getPokemonList } from "@/lib/api";
-import RandomPokemon from "@/components/RandomPokemon";
+import RandomPokemonClient from "@/components/RandomPokemonClient";
 import FeaturedPokemon from "@/components/FeaturedPokemon";
 
 export default async function Home() {
@@ -9,7 +9,7 @@ export default async function Home() {
     .slice(0, 4);
 
   return (
-    <main>
+    <main className="flex flex-col flex-grow">
       <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">
         <h1 className="text-center mt-14 text-8xl font-extrabold text-transparent bg-gradient-to-r from-purple-800 to-blue-800 [background-clip:text]">
           Gotta catch 'em all!
@@ -19,7 +19,7 @@ export default async function Home() {
           <br /> your favourite and learn about their stats.
         </p>
         <div className="mt-8">
-          <RandomPokemon pokemonList={pokemonList} />
+          <RandomPokemonClient pokemonList={pokemonList} />
         </div>
       </section>
 
