@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-white shadow-md content-grid">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/Logo.png" alt="Pokédex Logo" width={40} height={40} />

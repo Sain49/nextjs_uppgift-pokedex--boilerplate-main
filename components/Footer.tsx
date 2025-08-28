@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-800 text-white py-8 content-grid">
       <div className="container flex flex-col items-center mx-auto px-4 text-center">
         <div className="flex justify-center items-center gap-2">
           <Image src="/Logo.png" alt="Pokedex logo" width={40} height={40} />
