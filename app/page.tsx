@@ -1,11 +1,12 @@
-import Image from "next/image";
-import PokemonCard from "@/components/PokemonCard";
-
 import { getPokemonList } from "@/lib/api";
+import RandomPokemon from "@/components/RandomPokemon";
+import FeaturedPokemon from "@/components/FeaturedPokemon";
 
 export default async function Home() {
   const pokemonList = await getPokemonList();
-  const randomPokemon = pokemonList.sort(() => 0.5 - Math.random()).slice(0, 4);
+  const randomPokemons = pokemonList
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 4);
 
   return (
     <main>
@@ -17,22 +18,15 @@ export default async function Home() {
           Discover, search and explore the amazing world of Pokémon. Find
           <br /> your favourite and learn about their stats.
         </p>
-        <button className="btn-primary">
-          <Image src="/Dice.svg" width={25} height={25} alt="Dice" />
-          Random Pokémon
-        </button>
-
-        <section className="p-8">
-          <h2 className="text-3xl font-bold text-center mb-8 font-stretch-expanded">
-            Featured Pokemon
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {randomPokemon.map((pokemon: any) => (
-              <PokemonCard key={pokemon.name} pokemon={pokemon} />
-            ))}
-          </div>
-        </section>
+        <div className="mt-8">
+          <RandomPokemon pokemonList={pokemonList} />
+        </div>
       </section>
+
+      {/* Serach from */}
+
+      {/* Featured Pokemon */}
+      <FeaturedPokemon randomPokemons={randomPokemons} />
     </main>
   );
 }
