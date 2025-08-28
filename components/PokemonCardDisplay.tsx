@@ -1,10 +1,15 @@
 import Image from "next/image";
 
-export default async function PokemonCard({
-  pokemonData,
-}: {
-  pokemonData: any;
-}) {
+export default function PokemonCard({ pokemonData }: { pokemonData: any }) {
+  // missing or incomplete data
+  if (!pokemonData || !pokemonData.sprites) {
+    return (
+      <div className="bg-white rounded-2xl shadow-lg border-4 border-gray-300 p-4 relative text-center h-full flex items-center justify-center">
+        <p className="text-gray-500">Pokémon data is unavailable.</p>
+      </div>
+    );
+  }
+
   const imagerUrl = pokemonData.sprites.other["official-artwork"].front_default;
   const types = pokemonData.types.map((typeInfo: any) => typeInfo.type.name);
 
