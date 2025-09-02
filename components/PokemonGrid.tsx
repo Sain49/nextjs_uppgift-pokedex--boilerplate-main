@@ -8,7 +8,7 @@ export default function PokemonGrid({
   listTitle: string;
 }) {
   return (
-    <section className="p-8">
+    <section className="p-8 bg-gradient-to-r from-purple-100 to-blue-100">
       <h2 className="text-3xl font-bold text-center mb-8 font-stretch-expanded">
         {listTitle}
       </h2>

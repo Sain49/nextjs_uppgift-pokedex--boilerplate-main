@@ -1,6 +1,7 @@
 import { getPokemonList } from "@/lib/api";
 import RandomPokemonClient from "@/components/RandomPokemonClient";
 import PokemonGrid from "@/components/PokemonGrid";
+import SearchForm from "@/components/SearchForm";
 
 export default async function Home() {
   const pokemonList = await getPokemonList();
@@ -24,6 +25,7 @@ export default async function Home() {
       </section>
 
       {/* Serach from */}
+      <SearchForm />
 
       {/* Featured Pokemon */}
       <PokemonGrid
