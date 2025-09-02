@@ -2,12 +2,12 @@ import PokemonGrid from "@/components/PokemonGrid";
 import { getPokemonByType } from "@/lib/api";
 
 export default async function Pokedex({
-  pokemomType = "normal",
+  searchParams,
 }: {
-  pokemomType: string;
+  searchParams: { pokemomType?: string };
 }) {
+  const pokemomType = searchParams.pokemomType || "normal";
   const pokemonsByType = (await getPokemonByType(pokemomType)).slice(0, 20); // limits to first 20 items
-  console.log(pokemonsByType.map((pokemon: any) => pokemon));
   return (
     <main className="flex flex-col flex-grow">
       <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">

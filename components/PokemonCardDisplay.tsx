@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PokemonCard({ pokemonData }: { pokemonData: any }) {
   // missing or incomplete data
@@ -44,12 +45,14 @@ export default function PokemonCard({ pokemonData }: { pokemonData: any }) {
         </h3>
         <div className="flex justify-center gap-2">
           {types.map((type: string) => (
-            <span
-              key={type}
-              className={`badge-${type} px-2 text-xs font-semibold rounded-full`}
-            >
-              {type}
-            </span>
+            <Link href={`/search/${type}`} key={type}>
+              <span
+                key={type}
+                className={`badge-${type} px-2 text-xs font-semibold rounded-full`}
+              >
+                {type}
+              </span>
+            </Link>
           ))}
         </div>
       </div>
