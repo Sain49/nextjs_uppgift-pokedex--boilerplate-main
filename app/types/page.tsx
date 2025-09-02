@@ -1,6 +1,6 @@
 import { getPokemonTypes } from "@/lib/api";
 
-export default async function Page() {
+export default async function Types() {
   const pokemonTypes = await getPokemonTypes();
   console.log(pokemonTypes.map((type: any) => type.name));
 
