@@ -1,6 +1,6 @@
 import { getPokemonList } from "@/lib/api";
 import RandomPokemonClient from "@/components/RandomPokemonClient";
-import FeaturedPokemon from "@/components/FeaturedPokemon";
+import PokemonGrid from "@/components/PokemonGrid";
 
 export default async function Home() {
   const pokemonList = await getPokemonList();
@@ -26,7 +26,10 @@ export default async function Home() {
       {/* Serach from */}
 
       {/* Featured Pokemon */}
-      <FeaturedPokemon randomPokemons={randomPokemons} />
+      <PokemonGrid
+        pokemonsList={randomPokemons}
+        listTitle={"Featured Pokemon"}
+      />
     </main>
   );
 }
