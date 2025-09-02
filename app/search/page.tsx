@@ -4,9 +4,10 @@ import { getPokemonByType } from "@/lib/api";
 export default async function Pokedex({
   searchParams,
 }: {
-  searchParams: { pokemomType?: string };
+  searchParams: { pokemonType?: string };
 }) {
-  const pokemomType = searchParams.pokemomType || "normal";
+  console.log("Search params:", searchParams);
+  const pokemomType = searchParams.pokemonType || "normal";
   const pokemonsByType = (await getPokemonByType(pokemomType)).slice(0, 20); // limits to first 20 items
   return (
     <main className="flex flex-col flex-grow">
