@@ -9,7 +9,7 @@ export async function getPokemon(nameOrId: string) {
   return res.json();
 }
 
-export async function getPokemonList(limit = 20, offset = 20) {
+export async function getPokemonList(limit = 50, offset = 0) {
   const res = await fetch(`${Api_url}/pokemon?limit=${limit}&offset=${offset}`);
   if (!res.ok) {
     throw new Error("Failed to fetch pokemon list");
