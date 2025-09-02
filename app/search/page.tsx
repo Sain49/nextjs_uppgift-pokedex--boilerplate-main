@@ -19,7 +19,7 @@ export default async function Pokedex({
       {/* List of Pokemon by type */}
       <PokemonGrid
         pokemonsList={pokemonsByType}
-        listTitle={`List of ${pokemomType} type Pokemons`}
+        listTitle={`${pokemomType} Pokemons`}
       />
     </main>
   );
