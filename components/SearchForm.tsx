@@ -10,7 +10,9 @@ export default function SearchForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      router.push(`/search?pokemon=${encodeURIComponent(searchTerm.trim())}`);
+      router.push(
+        `/search?pokemonNameOrId=${encodeURIComponent(searchTerm.trim())}`
+      );
     }
   };
 
@@ -27,7 +29,7 @@ export default function SearchForm() {
             id="search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full pl-4 p-2.5 pr-10 shadow-md dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-purple-500 dark:focus:border-purple-500"
+            className="block w-full pl-4 p-2.5 pr-10 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             placeholder="Search Pokemon by name or ID"
             required
           />
