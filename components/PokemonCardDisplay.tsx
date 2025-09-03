@@ -44,7 +44,7 @@ export default function PokemonCard({ pokemonData }: { pokemonData: any }) {
           {pokemonData.name}
         </h3>
         <div className="flex justify-center gap-2">
-          {types.map((type: string) => (
+          {types.map((type: any) => (
             <Link href={`/search?pokemonType=${type}`} key={type}>
               <span
                 key={type}
