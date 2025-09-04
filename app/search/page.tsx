@@ -19,7 +19,7 @@ export default async function Pokedex({
             </h1>
           </section>
           <section className="flex justify-center p-8">
-            <PokemonCardDisplay pokemonData={pokemon} />
+            <PokemonCardDisplay pokemon={pokemon} />
           </section>
         </main>
       );
@@ -53,7 +53,7 @@ export default async function Pokedex({
       {/* List of Pokemon by type */}
       <PokemonGrid
         pokemonsList={pokemonsByType}
-        listTitle={`${pokemonType} Pokemons`}
+        title={`${pokemonType} Pokemons`}
       />
     </main>
   );
