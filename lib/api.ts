@@ -1,3 +1,5 @@
+import { Pokemon } from "./interfaces";
+
 const Api_url = "https://pokeapi.co/api/v2";
 
 export async function getPokemon(nameOrId: string) {
@@ -36,5 +38,5 @@ export async function getPokemonByType(type: string) {
   }
 
   const data = await res.json();
-  return data.pokemon.map((p: any) => p.pokemon);
+  return data.pokemon.map((p: { pokemon: Pokemon }) => p.pokemon);
 }

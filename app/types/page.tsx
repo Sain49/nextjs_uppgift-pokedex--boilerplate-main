@@ -1,8 +1,9 @@
 import { getPokemonTypes } from "@/lib/api";
 import Link from "next/link";
+import { PokemonType } from "@/lib/interfaces";
 
 export default async function Types() {
-  const pokemonTypes = await getPokemonTypes();
+  const pokemonTypes: PokemonType[] = await getPokemonTypes();
 
   return (
     <main className="flex flex-col flex-grow">
@@ -20,7 +21,7 @@ export default async function Types() {
       <section className="flex-grow bg-white p-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
-            {pokemonTypes.map((type: any) => (
+            {pokemonTypes.map((type: PokemonType) => (
               <Link href={`/search?pokemonType=${type.name}`} key={type.name}>
                 <div className="bg-gray-50 hover:bg-purple-50 rounded-lg p-3 text-center transition-colors border border-gray-300 hover:border-purple-200">
                   <span className="text-gray-700 hover:text-purple-600 font-medium text-sm capitalize transition-colors">

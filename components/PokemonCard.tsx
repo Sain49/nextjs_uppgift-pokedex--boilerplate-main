@@ -41,7 +41,7 @@ export default function PokemonCard({
         </span>
         <h3 className="font-semi-bold text-2xl capitalize">{pokemon.name}</h3>
         <div className="flex justify-center gap-2">
-          {types.map((type: any) => (
+          {types.map((type: string) => (
             <Link href={`/search?pokemonType=${type}`} key={type}>
               <span
                 key={type}
