@@ -1,42 +1,53 @@
-import { Pokemon } from "./interfaces";
+import { Pokemon, PokemonType } from "./interfaces";
+import { API_CONFIG, POKEMON_LIMITS } from "./constants";
 
-const Api_url = "https://pokeapi.co/api/v2";
-
-export async function getPokemon(nameOrId: string) {
-  const res = await fetch(`${Api_url}/pokemon/${nameOrId}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch pokemon");
+class PokemonAPIError extends Error {
+  constructor(message: string, public status?: number) {
+    super(message);
+    this.name = "PokemonAPIError";
   }
-
-  return res.json();
 }
 
-export async function getPokemonList(limit = 50, offset = 0) {
-  const res = await fetch(`${Api_url}/pokemon?limit=${limit}&offset=${offset}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch pokemon list");
+async function fetchWithErrorHandling<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new PokemonAPIError(
+      `API request failed: ${response.statusText}`,
+      response.status
+    );
   }
 
-  const data = await res.json();
+  return response.json();
+}
+
+export async function getPokemon(nameOrId: string): Promise<Pokemon> {
+  return fetchWithErrorHandling<Pokemon>(
+    `${API_CONFIG.BASE_URL}/${API_CONFIG.ENDPOINTS.POKEMON}/${nameOrId}`
+  );
+}
+
+export async function getPokemonList(
+  limit = 50,
+  offset = 0
+): Promise<PokemonType[]> {
+  const data = await fetchWithErrorHandling<{ results: PokemonType[] }>(
+    `${API_CONFIG.BASE_URL}/${API_CONFIG.ENDPOINTS.POKEMON}?limit=${limit}&offset=${offset}`
+  );
   return data.results;
 }
 
-export async function getPokemonTypes() {
-  const res = await fetch(`${Api_url}/type`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch pokemon types");
-  }
-
-  const data = await res.json();
+export async function getPokemonTypes(): Promise<PokemonType[]> {
+  const data = await fetchWithErrorHandling<{ results: PokemonType[] }>(
+    `${API_CONFIG.BASE_URL}/${API_CONFIG.ENDPOINTS.TYPES}`
+  );
   return data.results;
 }
 
-export async function getPokemonByType(type: string) {
-  const res = await fetch(`${Api_url}/type/${type}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch pokemon by type");
-  }
+export async function getPokemonByType(type: string): Promise<PokemonType[]> {
+  const data = await fetchWithErrorHandling<{
+    pokemon: Array<{ pokemon: PokemonType }>;
+  }>(`${API_CONFIG.BASE_URL}/${API_CONFIG.ENDPOINTS.TYPES}/${type}`);
 
-  const data = await res.json();
-  return data.pokemon.map((p: { pokemon: Pokemon }) => p.pokemon);
+  return data.pokemon.map((p) => p.pokemon);
 }
