@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Pokemon } from "@/lib/interfaces";
 import { getPokemonStats, getPokemonTypes, getPokemonImg } from "@/lib/util";
+import { POKEMON_TYPE_COLORS } from "@/lib/constants";
 
 export default function PokemonCard({
   pokemon: pokemon,
@@ -26,16 +27,28 @@ export default function PokemonCard({
   const types = getPokemonTypes(pokemon);
   const pokemonType = types[0] || "normal";
 
+  // Get colors from constants
+  const getTypeColor = (type: string) => {
+    return (
+      POKEMON_TYPE_COLORS[type as keyof typeof POKEMON_TYPE_COLORS] ||
+      POKEMON_TYPE_COLORS.normal
+    );
+  };
+
+  const primaryTypeColor = getTypeColor(pokemonType);
+
   return (
     <div className="bg-white rounded-2xl shadow-lg border-4 border-blue-300 p-3 relative flex flex-col items-center">
       <div
-        className={`absolute bg-white rounded-full p-2 border-4 image-border-${pokemonType} brightness-[1.2] mt-2`}
+        className="absolute bg-white rounded-full p-2 border-4 brightness-[1.1] mt-2"
+        style={{ borderColor: primaryTypeColor }}
       >
         <Image src={imagerUrl} alt={pokemon.name} width={75} height={75} />
       </div>
       <div className="text-center mt-28">
         <span
-          className={`badge-${pokemonType} brightness-[1.2] text-xs rounded-full px-1`}
+          className="text-xs rounded-full px-1 text-white font-semibold brightness-[1.1]"
+          style={{ backgroundColor: primaryTypeColor }}
         >
           {pokemonId}
         </span>
@@ -44,8 +57,8 @@ export default function PokemonCard({
           {types.map((type: string) => (
             <Link href={`/search?pokemonType=${type}`} key={type}>
               <span
-                key={type}
-                className={`badge-${type} px-2 text-xs font-semibold rounded-full`}
+                className="px-2 text-xs font-semibold rounded-full text-white"
+                style={{ backgroundColor: getTypeColor(type) }}
               >
                 {type}
               </span>
