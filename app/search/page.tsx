@@ -1,25 +1,30 @@
 import PokemonGrid from "@/components/PokemonGrid";
 import { getPokemonByType, getPokemon } from "@/lib/api";
-import PokemonCardDisplay from "@/components/PokemonCard";
+import PokemonCard from "@/components/PokemonCard";
 
-export default async function Pokedex({
-  searchParams,
-}: {
-  searchParams: { pokemonType?: string; pokemonNameOrId?: string };
-}) {
+interface SearchPageProps {
+  searchParams: Promise<{
+    pokemonType?: string;
+    pokemonNameOrId?: string;
+  }>;
+}
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const params = await searchParams;
+
   // Handle individual Pokemon search
-  if (searchParams.pokemonNameOrId) {
+  if (params.pokemonNameOrId) {
     try {
-      const pokemon = await getPokemon(searchParams.pokemonNameOrId);
+      const pokemon = await getPokemon(params.pokemonNameOrId);
       return (
         <main className="flex flex-col flex-grow">
           <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">
             <h1 className="text-center mt-14 text-8xl font-extrabold text-transparent bg-gradient-to-r from-purple-800 to-blue-800 [background-clip:text]">
-              Pokemon {pokemon.name}
+              {pokemon.name}
             </h1>
           </section>
           <section className="flex justify-center p-8">
-            <PokemonCardDisplay pokemon={pokemon} />
+            <PokemonCard pokemon={pokemon} />
           </section>
         </main>
       );
@@ -31,8 +36,7 @@ export default async function Pokedex({
               Pokemon Not Found
             </h1>
             <p className="text-center text-white text-xl">
-              Could not find Pokemon with name or ID:{" "}
-              {searchParams.pokemonNameOrId}
+              Could not find Pokemon with name or ID: {params.pokemonNameOrId}
             </p>
           </section>
         </main>
@@ -41,19 +45,19 @@ export default async function Pokedex({
   }
 
   // Handle Pokemon type search
-  const pokemonType = searchParams.pokemonType || "normal";
-  const pokemonsByType = (await getPokemonByType(pokemonType)).slice(0, 20); // limits to first 20 items
+  const pokemonType = params.pokemonType || "normal";
+  const pokemonsByType = (await getPokemonByType(pokemonType)).slice(0, 20);
+
   return (
     <main className="flex flex-col flex-grow">
       <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">
         <h1 className="text-center mt-14 text-8xl font-extrabold text-transparent bg-gradient-to-r from-purple-800 to-blue-800 [background-clip:text]">
-          Pokemon Type {pokemonType}
+          {pokemonType} Type Pokemon
         </h1>
       </section>
-      {/* List of Pokemon by type */}
       <PokemonGrid
         pokemonsList={pokemonsByType}
-        title={`${pokemonType} Pokemons`}
+        title={`${pokemonType} Pokemon`}
       />
     </main>
   );
