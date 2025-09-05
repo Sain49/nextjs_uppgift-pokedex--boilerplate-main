@@ -28,7 +28,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           </section>
         </main>
       );
-    } catch (error) {
+    } catch (_error) {
       return (
         <main className="flex flex-col flex-grow">
           <section className="flex flex-col items-center gap-4 bg-gradient-to-br [background-image:linear-gradient(-10deg,_#C97FE4,_#AECDF6)] p-14">

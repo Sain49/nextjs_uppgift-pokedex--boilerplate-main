@@ -33,7 +33,7 @@ export default function RandomPokemonClient({
       </button>
       {selectedPokemon && (
         <div className="w-full max-w-xs h-60 flex items-center justify-center">
-          {loading && <LoadingSpinner />}
+          {loading && <LoadingSpinner size="md" />}
           {error && (
             <ErrorMessage
               title="Failed to Load Pokemon"
