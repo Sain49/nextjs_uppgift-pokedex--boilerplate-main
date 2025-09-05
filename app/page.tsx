@@ -2,12 +2,15 @@ import { getPokemonList } from "@/lib/api";
 import RandomPokemonClient from "@/components/RandomPokemonClient";
 import PokemonGrid from "@/components/PokemonGrid";
 import SearchForm from "@/components/SearchForm";
+import { getRandomPokemons } from "@/lib/util";
+import { PokemonType } from "@/lib/interfaces";
 
 export default async function Home() {
   const pokemonList = await getPokemonList();
-  const randomPokemons = pokemonList
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 4);
+  // const randomPokemons = pokemonList
+  //   .sort(() => 0.5 - Math.random())
+  //   .slice(0, 4);
+  const randomPokemons: PokemonType[] = getRandomPokemons(pokemonList, 4);
 
   return (
     <main className="flex flex-col flex-grow">
@@ -28,10 +31,7 @@ export default async function Home() {
       <SearchForm />
 
       {/* Featured Pokemon */}
-      <PokemonGrid
-        pokemonsList={randomPokemons}
-        listTitle={"Featured Pokemon"}
-      />
+      <PokemonGrid pokemonsList={randomPokemons} title={"Featured Pokemon"} />
     </main>
   );
 }
