@@ -17,7 +17,7 @@ export default function SearchForm() {
   };
 
   return (
-    // Search form with a button icon only on the right side of the input field
+    // Search form with a button icon only, on the right side of the input field
     <section className="flex justify-center mt-10 mb-10 w-full">
       <form className="w-3xl" onSubmit={handleSubmit}>
         <label htmlFor="search" className="sr-only">
