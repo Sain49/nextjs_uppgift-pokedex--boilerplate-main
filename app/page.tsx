@@ -5,7 +5,7 @@ import SearchForm from "@/components/SearchForm";
 
 export default async function Home() {
   const [pokemonList, randomPokemons] = await Promise.all([
-    PokemonService.getAllPokemonForRandom(),
+    PokemonService.getAllPokemons(),
     PokemonService.getFeaturedPokemon(),
   ]);
 
@@ -20,11 +20,15 @@ export default async function Home() {
           <br /> your favourite and learn about their stats.
         </p>
         <div className="mt-8">
+          {/* Shows a random pokemon on Random button click */}
           <RandomPokemonClient pokemonList={pokemonList} />
         </div>
       </section>
 
+      {/* Search for pokemons based on name or id */}
       <SearchForm />
+
+      {/* Featured Pokemons */}
       <PokemonGrid pokemonsList={randomPokemons} title="Featured Pokemon" />
     </main>
   );
