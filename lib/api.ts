@@ -1,5 +1,5 @@
 import { Pokemon, PokemonType } from "./interfaces";
-import { API_CONFIG, POKEMON_LIMITS } from "./constants";
+import { API_CONFIG } from "./constants";
 
 class PokemonAPIError extends Error {
   constructor(message: string, public status?: number) {
