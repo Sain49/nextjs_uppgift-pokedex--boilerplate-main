@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import PokemonCard from "./PokemonCard";
+import LoadingSpinner from "./ui/LoadingSpinner";
+import ErrorMessage from "./ui/ErrorMessage";
 import { PokemonType } from "@/lib/interfaces";
 import { usePokemon } from "@/hooks/usePokemon";
 
@@ -19,6 +21,10 @@ export default function RandomPokemonClient({
     setSelectedPokemon(pokemonList[randomIndex].name);
   };
 
+  const handleRetry = () => {
+    setSelectedPokemon(null);
+  };
+
   return (
     <div className="flex flex-col items-center gap-4">
       <button className="btn-primary" onClick={getRandomPokemon}>
@@ -27,10 +33,15 @@ export default function RandomPokemonClient({
       </button>
       {selectedPokemon && (
         <div className="w-full max-w-xs h-60 flex items-center justify-center">
-          {loading && (
-            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-purple-800"></div>
+          {loading && <LoadingSpinner />}
+          {error && (
+            <ErrorMessage
+              title="Failed to Load Pokemon"
+              message={error}
+              showRetry
+              onRetry={handleRetry}
+            />
           )}
-          {error && <p className="text-red-500">{error}</p>}
           {pokemon && !loading && <PokemonCard pokemon={pokemon} />}
         </div>
       )}
